@@ -6,7 +6,7 @@ use App\Http\Controllers\DashboardController;
 
 // Route untuk halaman welcome
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/account/login', [LoginController::class, 'index'])->name('account.login');
