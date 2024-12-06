@@ -26,7 +26,7 @@ class LoginController extends Controller
         // Cek kredensial login
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate(); // Regenerasi sesi untuk mencegah session fixation
-            return redirect()->intended('account/dashboard'); // Redirect ke dashboard
+            return redirect()->intended('admin/dashboard'); // Redirect ke dashboard
         } else {
             // Kredensial salah
             return redirect()->route('account.login')->withErrors([
