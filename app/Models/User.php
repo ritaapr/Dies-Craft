@@ -12,13 +12,13 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
+    protected $table = 'msl_user'; // Nama tabel di database
+    protected $primaryKey = 'id_user'; // Nama primary key
+    public $timestamps = false; // Nonaktifkan timestamps jika tidak ada kolom created_at dan updated_at
+
     protected $fillable = [
-        'name',
+        'nama_user',
         'email',
         'password',
     ];
@@ -42,7 +42,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password' => 'string',
         ];
     }
 

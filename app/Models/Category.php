@@ -21,4 +21,6 @@ class Category extends Model
     {
         return $this->hasMany(Product::class, 'id_kategori', 'id_kategori');
     }
+
+    
 }

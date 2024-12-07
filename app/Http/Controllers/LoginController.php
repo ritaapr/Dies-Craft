@@ -14,42 +14,36 @@ class LoginController extends Controller
     }
 
     public function authenticate(Request $request)
-    {
+{
     // Validasi input
-    $validator = Validator::make($request->all(), [
+    $request->validate([
         'email' => 'required|email',
-        'password' => 'required'
+        'password' => 'required',
     ]);
 
-    // Jika validasi berhasil
-    if ($validator->passes()) {
-        // Cek kredensial login
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $request->session()->regenerate(); // Regenerasi sesi untuk mencegah session fixation
-            return redirect()->intended('admin/dashboard'); // Redirect ke dashboard
-        } else {
-            // Kredensial salah
-            return redirect()->route('account.login')->withErrors([
-                'login' => 'Either email or password is incorrect.'
-            ]);
-        }
-    } else {
-        // Jika validasi gagal
-        return redirect()->route('account.login')
-            ->withInput()
-            ->withErrors($validator);
+    // Autentikasi pengguna
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        $request->session()->regenerate(); // Regenerasi sesi
+        return redirect()->intended('admin/dashboard'); // Redirect ke dashboard
     }
+
+    // Jika kredensial salah
+    return back()->withErrors([
+        'login' => __('auth.failed'),
+    ])->withInput();
 }
 
-    public function logout(Request $request)
+
+public function logout(Request $request)
 {
-    Auth::logout(); // Logout pengguna
-    $request->session()->invalidate(); // Hapus semua sesi
+    Auth::logout();
+    $request->session()->invalidate(); // Hapus sesi
     $request->session()->regenerateToken(); // Regenerasi token CSRF
-    return redirect()->route('account.login'); // Redirect ke halaman login
-    }
+
+    return redirect()->route('account.login'); // Redirect ke login
 }
 
+}
 
 
 

@@ -39,11 +39,6 @@ class CategoriesController extends Controller
         return redirect()->back()->with('success', 'Kategori berhasil ditambahkan.');
     }
 
-    public function edit($id)
-    {
-        $category = Category::find($id); // Cari data kategori berdasarkan ID
-        return view('backend.edit-category', compact('category')); // Kirim data ke view edit
-    }
 
     public function destroy($id_kategori)
     {

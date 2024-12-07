@@ -30,18 +30,20 @@ Route::delete('/categories/{id_kategori}', [CategoriesController::class, 'destro
 
 Route::get('/admin/products', [ProductsController::class, 'index'])->name('admin.products');
 Route::post('/admin/products/create', [ProductsController::class, 'store'])->name('products.store');
+Route::put('/admin/products/{id_produk}', [ProductsController::class, 'update'])->name('products.update');
+Route::delete('/products/{id_produk}', [ProductsController::class, 'destroy'])->name('products.destroy');
+
+// Route::get('/admin/products/{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+// Route::delete('/admin/products/{id}', [ProductsController::class, 'destroy'])->name('products.destroy');
 
 
-Route::get('/admin/products/{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
-Route::delete('/admin/products/{id}', [ProductsController::class, 'destroy'])->name('products.destroy');
-
-// Route::post('/account/categories', [CategoriesController::class, 'submit'])->name('categories.submit');
-// Route::get('/categories/{id}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
-// Route::put('/categories/{id}', [CategoriesController::class, 'update'])->name('categories.update');
-// Route untuk menghapus kategori
+// // Route::post('/account/categories', [CategoriesController::class, 'submit'])->name('categories.submit');
+// // Route::get('/categories/{id}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
+// // Route::put('/categories/{id}', [CategoriesController::class, 'update'])->name('categories.update');
+// // Route untuk menghapus kategori
 
 
-Route::get('account/products/create-product', [ProductsController::class, 'create'])->name('create-product');
+// Route::get('account/products/create-product', [ProductsController::class, 'create'])->name('create-product');
 
 
 
