@@ -33,8 +33,7 @@ class LoginController extends Controller
     ])->withInput();
 }
 
-
-public function logout(Request $request)
+public function logout(Request $request)  
 {
     Auth::logout();
     $request->session()->invalidate(); // Hapus sesi
@@ -42,8 +41,5 @@ public function logout(Request $request)
 
     return redirect()->route('account.login'); // Redirect ke login
 }
-
 }
-
-
 
