@@ -53,7 +53,6 @@
                       Keep me signed in
                     </label>
                   </div>
-                  <a href="forgot-password.html" class="auth-link text-black">Forgot password?</a>
                 </div>
             
               </form>

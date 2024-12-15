@@ -5,11 +5,13 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\FrontendController;
 
 // Route untuk halaman welcome
 Route::get('/', function () {
     return view('index');
 });
+
 
 Route::get('/', [CategoriesController::class, 'getCategories']); // Menampilkan kategori di halaman depan
 Route::get('/{category}', [ProductsController::class, 'showCategory'])->name('category.show');

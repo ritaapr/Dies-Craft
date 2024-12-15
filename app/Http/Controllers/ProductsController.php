@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -127,5 +128,7 @@ class ProductsController extends Controller
     // Kirim data ke view
     return view('frontend.category', compact('category', 'products', 'categories'));
 }
+
+
 }
 

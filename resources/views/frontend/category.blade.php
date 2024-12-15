@@ -54,23 +54,60 @@
                                     </div>
                                     <div class="p-4 pb-0">
                                         <h5 class="text-primary mb-3">Rp. {{ number_format($product->harga_produk, 0, ',', '.') }}</h5>
-                                        <a class="d-block h5 mb-2" href="">{{ $product->nama_produk }}</a>
+                                        <a href="#"
+                                            class="d-block h5 mb-2"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#productModal"
+                                            data-name="{{ $product->nama_produk }}"
+                                            data-description="{{ $product->deskripsi_produk }}">{{ $product->nama_produk }}</a>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
-                            <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
-                                <a class="btn btn-primary py-3 px-5" href="">More Product</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="productDescription"></p>
+                </div>
+                
+            </div>
         </div>
-        
+    </div>
 
-        <!-- Property List End -->
+    <!-- SweetAlert2 Script -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        const productModal = document.getElementById('productModal');
+        productModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget; // Elemen yang diklik untuk membuka modal
+            const name = button.getAttribute('data-name'); // Ambil nama produk
+            const description = button.getAttribute('data-description'); // Ambil deskripsi produk
 
-        <x-frontfooter />
-        </body>
+            // Isi data ke dalam modal
+            const modalTitle = productModal.querySelector('.modal-title');
+            const modalBody = productModal.querySelector('.modal-body p');
+
+            modalTitle.textContent = name;
+            modalBody.textContent = description;
+        });
+    </script>
+
+
+    <!-- Property List End -->
+
+    <x-frontfooter />
+    </body>

@@ -3,14 +3,14 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="main-panel">
   <div class="content-wrapper">
-  @if (session('success'))
-        <script>
-            Swal.fire({
-                title: "Good job!",
-                text: "{{ session('success') }}",
-                icon: "success"
-            });
-        </script>
+    @if (session('success'))
+    <script>
+      Swal.fire({
+        title: "Good job!",
+        text: "{{ session('success') }}",
+        icon: "success"
+      });
+    </script>
     @endif
     <div class="row">
       <div class="col-md-12 grid-margin stretch-card">
@@ -123,9 +123,13 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @php
+                  $index = 0; // Inisialisasi variabel index
+                  @endphp
+
                   @foreach ($categories as $category) <!-- Iterasi data dari database -->
                   <tr>
-                    <td>{{ $category->id_kategori }}</td> <!-- Tampilkan ID Kategori -->
+                    <td>{{ $index + 1 }}</td> <!-- Tampilkan ID Kategori -->
                     <td>{{ $category->nama_kategori }}</td> <!-- Tampilkan Nama Kategori -->
                     <td>
                       <!-- Status dengan badge styling -->
@@ -183,11 +187,9 @@
                               // Submit form jika pengguna mengkonfirmasi
                               form.submit();
                             }
-                            
+
                           });
                         }
-
-                        
                       </script>
 
                       <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -214,7 +216,11 @@
                       </script>
                     </td>
                   </tr>
+                  @php
+        $index++; // Tingkatkan index
+    @endphp
                   @endforeach
+
                 </tbody>
               </table>
             </div>
@@ -224,7 +230,7 @@
     </div>
   </div>
 
-<!-- content-wrapper ends -->
-<!-- partial:partials/_footer.html') }} -->
+  <!-- content-wrapper ends -->
+  <!-- partial:partials/_footer.html') }} -->
 
-<x-adminfooter />
+  <x-adminfooter />

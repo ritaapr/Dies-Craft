@@ -55,7 +55,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="http://127.0.0.1:8000/" class="nav-item nav-link active">Home</a> <!-- Mengarahkan ke route home -->
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Kategori</a>
                             <div class="dropdown-menu rounded-0 m-0">
@@ -66,7 +66,7 @@
                                 @endforeach
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        
                     
                 </div>
             </nav>

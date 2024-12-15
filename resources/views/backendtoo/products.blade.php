@@ -194,7 +194,7 @@
                       </div>
                     </td>
                     <td>
-                      <button type="button" class="text-primary d-flex align-items-center btn btn-link editButton""
+                      <button type="button" class="text-primary d-flex align-items-center btn btn-link editButton"
                         data-id_produk=" {{ $product->id_produk }}"
                         data-nama_produk="{{ $product->nama_produk }}"
                         data-deskripsi_produk="{{ $product->deskripsi_produk }}"
